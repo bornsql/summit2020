@@ -1,0 +1,131 @@
+#######################################################################################
+# PASS Virtual Summit 2020 - SQL Server on Linux from A to Z (Randolph West)          #
+# Pre-conference session (2020-11-10)                                                 #
+#######################################################################################
+# The scripts in this document are procured from several sources, including Microsoft #
+# Docs, Wikipedia, genuinecoder.com, linuxhint.com, howtogeek.com, linux.org,         #
+# ss64.com, and tecmint.com.                                                          #
+# No copyright is claimed or intended from these code samples                         #
+#######################################################################################
+
+#######################################################################################
+### Part 1: Editing files with vi
+#######################################################################################
+
+vi newfile.txt
+
+### Use the i key to insert, the <Esc> key to get out of insert mode, and :q to quit.
+### If you make changes, use :w to write them, or :wq to write and quit
+
+#######################################################################################
+### Part 2: Common Linux commands
+#######################################################################################
+
+cd ~/test
+ls -la
+
+### Notice the permissions to the left of each entry
+### You can use chmod and chown to change these values, but take care
+
+# Default permissions are 644 for files, and 755 for directories
+
+# Clear the screen:
+
+clear
+
+# Run a command as the super user:
+
+sudo apt-get update
+
+# Open the built-in user manual:
+
+man ls
+
+# See a snapshot of what's happening on the box:
+
+ps
+ps -aux
+ps -aux | grep usr # show all but only match "usr"
+
+# Look at what's running on the box in near real-time:
+
+top
+
+# Look at a groovier top:
+
+htop
+
+# Query the network interfaces:
+
+ifconfig
+ifconfig <pick an interface, e.g. eth0>
+
+# Bonus: show network utilization with bandwidth monitor:
+
+bmon
+
+# See the date and time
+
+date
+
+# Disk usage:
+
+cd ~
+du -c
+
+# Disk free space:
+
+df    # shows data in 512-KB blocks
+df -h # shows data in human-readable sizes
+
+# Show free memory:
+
+free
+
+# See the commands you've typed:
+
+history
+
+# Shuts down the computer (be very careful with this command):
+
+sudo shutdown -r now # restarts the computer immediately
+
+#######################################################################################
+### Part 3: Download or view files online
+#######################################################################################
+
+# curl - displays the contents of a URL (uniform resource locator) by default:
+
+curl https://pass.org
+
+# wget - gets the contents of a URL and stores them by default:
+
+wget https://pass.org
+
+### Each of these tools can do the same thing with different switches
+### which you will see during the SQL Server installation demo
+
+#######################################################################################
+### Part 7: Other cool tools (if there's time)
+#######################################################################################
+
+
+file <filename>
+
+#######################################################################################
+### Part 7: Other cool tools (if there's time)
+#######################################################################################
+
+
+tree
+htop
+bmon
+
+top # (with t)
+
+ps -eu | grep VirtualBox
+
+## cd (and don't forget cd -)
+
+## kill a process
+

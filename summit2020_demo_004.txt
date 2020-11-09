@@ -1,0 +1,43 @@
+#######################################################################################
+# PASS Virtual Summit 2020 - SQL Server on Linux from A to Z (Randolph West)          #
+# Pre-conference session (2020-11-10)                                                 #
+#######################################################################################
+# The scripts in this document are procured from several sources, including Microsoft #
+# Docs, Wikipedia, genuinecoder.com, linuxhint.com, howtogeek.com, linux.org,         #
+# ss64.com, and tecmint.com.                                                          #
+# No copyright is claimed or intended from these code samples                         #
+#######################################################################################
+
+#######################################################################################
+### Configuring SQL Server 2019 on Ubuntu Linux 18.04 LTS
+#######################################################################################
+
+# Run mssql-conf setup and follow the prompts to set the SA password
+# and choose your edition.
+
+sudo /opt/mssql/bin/mssql-conf setup
+
+# Once the configuration is done, verify that the service is running:
+
+systemctl status mssql-server --no-pager
+
+# Make sure SQL Agent is enabled by default:
+
+sudo /opt/mssql/bin/mssql-conf set sqlagent.enabled true
+
+# Set the memory limit (and keep in mind the OOM killer):
+
+sudo /opt/mssql/bin/mssql-conf set memory.memorylimitmb 3328
+
+# Enable multiple instance-level traceflags:
+
+sudo /opt/mssql/bin/mssql-conf traceflag 3226 11024 on
+
+# Always restart after a configuration change:
+
+sudo systemctl restart mssql-server
+
+# Let's have a look at the config file using vi:
+
+sudo cat /var/opt/mssql/mssql-conf # SQL Server 2017
+sudo cat /var/opt/mssql/mssql.conf # SQL Server 2019

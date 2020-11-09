@@ -1,0 +1,187 @@
+#######################################################################################
+# PASS Virtual Summit 2020 - SQL Server on Linux from A to Z (Randolph West)          #
+# Pre-conference session (2020-11-10)                                                 #
+#######################################################################################
+# The scripts in this document are procured from several sources, including Microsoft #
+# Docs, Wikipedia, genuinecoder.com, linuxhint.com, howtogeek.com, linux.org,         #
+# ss64.com, and tecmint.com.                                                          #
+# No copyright is claimed or intended from these code samples                         #
+#######################################################################################
+
+#######################################################################################
+### Part 1: Connecting to your Linux server
+#######################################################################################
+
+# Connect to your server using SSH (secure shell)
+
+ssh user@x.x.x.x
+
+#######################################################################################
+### Part 2: Who / where / what?
+#######################################################################################
+
+# Who am I? What is my username?
+
+whoami
+
+# What version of Ubuntu Server is this?
+
+lsb_release -a   # this does not work on other distributions
+
+# See who else is logged into the computer:
+
+who
+
+# Where am I? Print the working directory (a.k.a. present working directory):
+
+pwd
+
+# List the contents of your home directory:
+
+ls
+ls -l  # long listing (detailed view)
+ls -la # all files (includes hidden)
+ls -lh # human readable file sizes
+ls -lS # ordered by size
+ls -F  # shows a trailing slash on directories
+ls -R  # recursive mode
+ls -r  # reverse output order
+ls -t  # ordered by date
+
+# Try some combinations!
+
+ls -alF
+ls -ltr
+
+# Try this on its own:
+
+ll
+
+# What else does -F show?
+
+ls -alF
+
+### MORE HERE: https://ss64.com/bash/ls.html
+
+#######################################################################################
+### Part 3: File and folder manipulation
+#######################################################################################
+
+# Make a new directory in your home directory:
+
+mkdir Test
+
+# Make a lower-case directory with the same name:
+
+mkdir test
+
+# Do a directory listing and see the two directories with the same name:
+
+ls -la
+
+# Create an empty file:
+
+touch newfile.txt
+
+# See the file:
+
+ls -la
+
+# Move the file to the test directory:
+
+mv newfile.txt test
+
+# Go into the test directory and see the file:
+
+cd test
+ls -la
+
+# Copy the file and give it a new name:
+
+cp newfile.txt filecopy.txt
+
+# Move the copied file to the Test directory (note the upper-case T):
+
+mv filecopy.txt ../Test
+
+# Copy the file again and give it a different name:
+
+cp newfile.txt to_be_deleted.txt
+
+# Delete (remove) the newly-created file:
+
+rm to_be_deleted.txt
+
+# Delete (remove) the Test folder (note the upper-case T):
+
+cd ..       # go up one directory
+pwd         # confirm where you expect to be
+rmdir Test  # remove the Test folder. What happens?
+
+### If there is an error message, what does it mean?
+
+# Try using rm (remove) instead:
+
+pwd         # make sure you're in the right place
+rmdir Test  # remove the Test directory
+
+### If there is an error message, what does it mean?
+
+# Try removing a directory with recursion (the directory and everything in it):
+
+pwd         # make sure you're in the right place
+rm -r Test  # force-remove the Test directory
+ls -la      # confirm that it has been deleted
+
+#######################################################################################
+### Part 4: Viewing files
+#######################################################################################
+
+# Add some random text from the built-in dictionary to a file:
+
+cd ~      # change to the home folder
+ls -la
+cat /usr/share/dict/words | sort -R | head -1024 > test/newfile.txt  # note the test directory
+
+# View the contents of the file:
+
+cd ~/test
+cat newfile.txt
+
+# Use the more and less commands to interrogate the file:
+
+more newfile.txt
+less newfile.txt
+
+### Use the up and down arrows in each example and see what happens
+### You will use the q key to quit from the viewer
+
+# Look at the first 10 lines:
+
+head newfile.txt
+
+# Look at the last 10 lines:
+
+tail newfile.txt
+
+# Use the -n switch to change the number of lines:
+
+tail -15 newfile.txt
+
+### Let's try some pipeline actions
+
+# Get the data from line 20 of the file and pipe it to less:
+
+tail +20 newfile.txt | less
+
+# Show the last 50 bytes of the file:
+
+tail -c 50 newfile.txt
+
+# Show the oldest two entries in a directory listing:
+
+ls -tl ~ | tail -2
+
+# Show only the lines in the containing the letter "s":
+
+tail newfile.txt | grep s

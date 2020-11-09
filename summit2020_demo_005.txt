@@ -1,0 +1,49 @@
+#######################################################################################
+# PASS Virtual Summit 2020 - SQL Server on Linux from A to Z (Randolph West)          #
+# Pre-conference session (2020-11-10)                                                 #
+#######################################################################################
+# The scripts in this document are procured from several sources, including Microsoft #
+# Docs, Wikipedia, genuinecoder.com, linuxhint.com, howtogeek.com, linux.org,         #
+# ss64.com, and tecmint.com.                                                          #
+# No copyright is claimed or intended from these code samples                         #
+#######################################################################################
+
+#######################################################################################
+### Connect to SQL Server from the command line
+#######################################################################################
+
+### Tools are located in /opt/mssql-tools/bin
+
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '<YourPassword>'
+
+mssql-cli -U
+
+### Which command-line tool do you prefer?
+
+-- list all special commands
+\?
+
+-- describe objects (calls sp_help)
+\d
+
+-- edit query in external editor
+\e
+
+-- list databases
+\ld
+
+-- list databases verbose
+\ld+
+
+-- list databases verbose with pattern
+\ld+ m
+
+#######################################################################################
+### Back up and restore a SQL Server database from the command line
+#######################################################################################
+
+mssql-cli -U
+
+-- list databases
+\ld
+

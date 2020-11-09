@@ -1,0 +1,19 @@
+#######################################################################################
+# PASS Virtual Summit 2020 - SQL Server on Linux from A to Z (Randolph West)          #
+# Pre-conference session (2020-11-10)                                                 #
+#######################################################################################
+# The scripts in this document are procured from several sources, including Microsoft #
+# Docs, Wikipedia, genuinecoder.com, linuxhint.com, howtogeek.com, linux.org,         #
+# ss64.com, and tecmint.com.                                                          #
+# No copyright is claimed or intended from these code samples                         #
+#######################################################################################
+
+#######################################################################################
+### Install SQL Server, client tools, and other packages on Ubuntu 18.04
+#######################################################################################
+
+# Update the list of packages:
+sudo apt-get update
+
+# Install prerequisite packages:
+sudo apt-get install -y wget apt-transport-https htop bmon tree nano
